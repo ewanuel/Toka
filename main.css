@@ -1,0 +1,157 @@
+body {
+    background-color: rgb(9, 8, 9);
+
+    flex-direction: column;
+    align-items: center;
+  }
+  
+
+.lg{
+    position: fixed;
+    float: left;
+    background-color: transparent;
+    border: none;
+}
+
+.b_pesqui {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateX(0%);
+}
+  
+.botões{
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    top: 40px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateX(0%);
+}
+
+/* espaçamento dentre os botões*/
+
+.botões button{
+    margin: 2px;
+}
+
+
+.Inc,
+.Mb,
+.Flc{
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+.Inc:hover,
+.Mb:hover,
+.Flc:hover{
+    text-decoration:underline;
+}
+
+.Csc,
+.Ent{
+    background-color: wheat;
+}
+
+.h1-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+}
+
+.s1 {
+    display: block;
+    margin: 0 auto;
+    max-width: 800px;
+    margin-top: 20px;
+    top: 100px;
+  }
+
+  .st1 {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+  }
+
+  .categorias{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+  }
+
+  .categorias button{
+    background-color: transparent;
+    border: none;
+  }
+
+  .dst p{
+    color: white;
+    font-size: 25px;
+  }
+
+  h2 {
+    display: flex;
+    flex-direction: row;
+    justify-self: space-between;
+  }
+
+ .pro1 button,
+ .pro2 button,
+ .pro3 button,
+ .pro4 button,
+ .pro5 button{
+  background-color: transparent;
+  border: none;
+  width: 222px; /* Centraliza a Imagem!*/
+  height: 150px; 
+ }
+
+ .pro1 p,
+ .pro2 p,
+ .pro3 p,
+ .pro4 p,
+ .pro5 p{
+  color: white;
+  text-decoration: none;
+  text-align: center;
+ }
+
+ 
+.pro1 img,
+.pro2 img,
+.pro3 img,
+.pro4 img,
+.pro5 img {
+  display: block;
+  max-width: 100%; /* Define a largura máxima da imagem */
+  height: auto;
+}
+
+.vnl p{
+  position: absolute;
+  color: white;
+  font-size: 70px;
+  top: 1080px;
+}
+
+.loja {
+  position: absolute; 
+  right: 40px; 
+}
+
