@@ -155,3 +155,38 @@ body {
   right: 40px; 
 }
 
+.end {
+  position: absolute;
+  color: white;
+  left: 900px;
+  top: 1450px;
+}
+
+.dept{
+  position: absolute;
+  color: white;
+  font-size: 40px;
+  top: 1400px;
+}
+
+.dep{
+  position: absolute;
+  color: white;
+  font-size: 25px;
+  top: 1500px;
+}
+
+.marc {
+  position: absolute;
+  top: 1850px;
+  width: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.flcs {
+  position: absolute;
+  color: white;
+  top: 2000px;
+  justify-content: center;
+}
