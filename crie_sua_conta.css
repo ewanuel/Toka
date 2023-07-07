@@ -1,0 +1,106 @@
+
+.bl_p{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: black;
+    z-index: 9999;
+
+}
+
+.lg {
+  position: fixed;
+  top: -587px;
+  left: -530px;
+  transform: scale(0.05);
+  background-color: transparent;
+  border: none;
+}
+
+.b_pesqui {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateX(0%);
+}
+
+.botões{
+  position: fixed;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateX(0%);
+}
+
+/* espaçamento dentre os botões*/
+
+.botões button{
+  margin: 2px;
+}
+
+
+.Inc,
+.Mb,
+.Flc{
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.Inc:hover,
+.Mb:hover,
+.Flc:hover{
+  text-decoration:underline;
+}
+
+.Csc,
+.Ent{
+  background-color: wheat;
+}
+
+body {
+background-color: rgb(9, 8, 9);
+flex-direction: column;
+align-items: center;
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 p{
+    font-size: 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+h1{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 63px;
+    margin-top: 60px;
+  }
+  
+  .h1 button {
+    margin: auto; /* Centralizar verticalmente o botão */
+  }
