@@ -174,15 +174,15 @@
     height: 150px;
   }
   
-  .pro1 p,
-  .pro2 p,
-  .pro3 p,
-  .pro4 p,
-  .pro5 p {
-    font-family:Arial, Helvetica, sans-serif;
-    margin-top: -4px;
-    text-decoration: none;
-    text-align: center;
+  .pro1 p a,
+  .pro2 p a,
+  .pro3 p a,
+  .pro4 p a,
+  .pro5 p a {
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -px;
+    text-decoration: none 
   }
   
   .pro1 img,
