@@ -39,13 +39,14 @@
     left: 0;
     right: 0;
     margin: auto;
-    transform: translateX(0%);
+    transform: scale(1);
 }
 
 .b_psq button {
     background-color: transparent;
     border: none;
     padding: 0;
+    transform: scale(0.8);
   }
 
 .b_sup_btns{
@@ -68,7 +69,57 @@
 .Ent{
     background-color: wheat;
 }
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .b_sup {
+      height: 40px; 
+  }
 
+  .Cat {
+      position: relative;
+      transform: scale(0.); 
+  }
+
+  .b_sup_btns {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+  }
+
+  .lg button {
+      position: relative;
+      transform: scale(0.03);
+      margin-top: -505px; 
+  }
+
+  .b_psq {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+
+ 
+  .Cr_s_c,
+  .Ent {
+      background-color: wheat;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 2px;
+      transform: scale(0.7);
+  }
+
+  
+  .b_psq input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+  }
+}
+}
 
 .swiper-slide {
         width: 100%;
@@ -117,13 +168,6 @@
     width: 150px; 
     height: auto;
   }
-
-.destaques_text {
-    font-size: 20px;
-    font-family:Arial, Helvetica, sans-serif;
-    margin-top: 45PX;
-    margin-left: 15px;
-  }
   
 .cat {
     text-align: center;
@@ -143,7 +187,7 @@
   }
 
 .destaques_text {
-    font-size: 20px;
+    font-size: 125%;
     font-family:Arial, Helvetica, sans-serif;
     margin-top: 45PX;
     margin-left: 15px;
@@ -160,7 +204,7 @@
   .pro5 {
     display: inline-block;
     text-align: center;
-    margin: 10px; 
+    margin: 3%; 
   }
   
   .pro1 button,
@@ -214,7 +258,7 @@
   }
   
   .loja_txt {
-    font-size: 50px;
+    font-size: 50%;
     font-family: "Segoe UI Light", "Segoe UI", sans-serif;
     text-align: left;
     margin-top: -190px;
@@ -228,6 +272,24 @@
     margin-top: -19px;
     margin-right: 10px;
   }
+
+
+.loja_android_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .loja_png {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .loja_txt {
+    display: none; /* Esconde o elemento .loja_txt em dispositivos Android */
+  }
+}
 
   .people {
     position: relative; 
@@ -324,3 +386,5 @@
   .inst{
     border-radius: 40px;
   }
+
+  

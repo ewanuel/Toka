@@ -5,7 +5,7 @@
   left: 0;
   width: 100%;
   height: 45px;
-  background-color: rgb(0, 0, 0);
+  background-color: black;
   z-index: 9999;
 }
 
@@ -36,13 +36,14 @@
   left: 0;
   right: 0;
   margin: auto;
-  transform: translateX(0%);
+  transform: scale(1);
 }
 
 .b_psq button {
   background-color: transparent;
   border: none;
   padding: 0;
+  transform: scale(0.8);
 }
 
 .b_sup_btns{
@@ -66,8 +67,60 @@
   background-color: wheat;
 }
 
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .b_sup {
+      height: 40px; 
+  }
+
+  .Cat {
+      position: relative;
+      transform: scale(0.); 
+  }
+
+  .b_sup_btns {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+  }
+
+  .lg button {
+      position: relative;
+      transform: scale(0.03);
+      margin-top: -505px; 
+  }
+
+  .b_psq {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+
+ 
+  .Cr_s_c,
+  .Ent {
+      background-color: wheat;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 2px;
+      transform: scale(0.7);
+  }
+
+  
+  .b_psq input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+  }
+}
+}
+
 body {
-background-color: rgb(223, 248, 243);
+background-color: rgb(243, 250, 253);
 flex-direction: column;
 align-items: center;
 }
@@ -90,7 +143,7 @@ align-items: center;
 .produt_n {
   position: absolute;
   font-size: 30px;
-  color: var(--elegance-red);
+  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
   right: -70px;
   top: 30%;
   transform: translate(-50%, -50%);
@@ -99,7 +152,7 @@ align-items: center;
 .desconto {
   position: absolute;
   font-size: 22px;
-  color: var(--elegance-yellow);
+  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
   right: 165px;
   top: 205px;
 }
@@ -107,8 +160,8 @@ align-items: center;
 .preco {
   position: absolute;
   font-size: 25px;
-  color: var(--elegance-yellow);
-  right: 226px;
+  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+  right: 200px;
   top: 200px;
 }
 
@@ -125,7 +178,7 @@ align-items: center;
   right: 40px;
   top: 350px;
   background-color: #ffc400;
-  border-radius: 40px;
+  border-radius: 10px;
   margin-top: 10px;
   align-items: center;
   color: white;
@@ -135,9 +188,10 @@ align-items: center;
 .acd_c {
   position: absolute;
   font-size: 20px;
+  right: 180px;
   background-color: #ffc400;
-  border-radius: 40px;
-  margin-top: 10px;
+  border-radius: 10px;
+  margin-top: -25px;
   align-items: center;
   color: white;
 }
@@ -149,8 +203,8 @@ align-items: center;
 
 
 .rdp {
-  display: flex; /* Utiliza flexbox para alinhar os elementos em uma linha */
-  align-items: center; /* Centraliza verticalmente os elementos */
+  display: flex; 
+  align-items: center; 
   margin-top: 650px;
   width: 100%;
   height: 45px;
@@ -161,27 +215,27 @@ align-items: center;
 .rdp img {
   width: 30px;
   height: 30px;
-  margin-right: 15px; /* Espaçamento horizontal entre o ícone e o texto */
+  margin-right: 15px; 
 }
 
 button {
-  margin-right: 20px; /* Espaçamento horizontal entre os botões */
-  border: none; /* Remove a borda do botão */
-  background-color: transparent; /* Torna o botão transparente */
-  cursor: pointer; /* Mostra o cursor de ponteiro ao passar sobre o botão */
+  margin-right: 20px; 
+  border: none; 
+  background-color: transparent; 
+  cursor: pointer; 
 }
 
 .zaptxt{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   color: white;
-  margin: 5px; /* Espaçamento vertical e horizontal entre os ícones e os textos */
+  margin: 5px;
 }
 .email {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   color: white;
-  margin: 10px 50px; /* Espaçamento vertical e horizontal entre os ícones e os textos */
+  margin: 10px 50px; 
 }
 
 .inst{
@@ -199,7 +253,13 @@ button {
 
 .coment{
   position: absolute;
-  right: 400px;
+  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+  top: 650px;
+  right: 500px;
+}
+
+.esc{
+  font-size: 70%;
 }
 
 .linha{

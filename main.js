@@ -40,4 +40,14 @@ var swiper = new Swiper('.swiper-container', {
   handleScrollAnimation(); // Executar a função no carregamento inicial
 
 
+  function isAndroid() {
+    return /Android/i.test(navigator.userAgent);
+  }
 
+  // Adicione a classe .loja_txt_android ao elemento .loja_txt se o dispositivo for Android
+  document.addEventListener("DOMContentLoaded", function () {
+    const lojaTxtElement = document.querySelector(".loja_txt");
+    if (isAndroid() && lojaTxtElement) {
+      lojaTxtElement.classList.add("loja_txt_android");
+    }
+  });
