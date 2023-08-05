@@ -266,3 +266,50 @@ button {
   position: relative;
   width: 300px; 
 }
+
+/* Mobile Styles */
+@media screen and (max-width: 768px) {
+  .produt img {
+    right: 0;
+    margin-top: 25%;
+    max-width: 100%;
+  }
+
+  .produt_n,
+  .desconto,
+  .preco {
+    position: static;
+    transform: none;
+    margin-top: %;
+    margin: px;
+  }
+
+  .btn_comp,
+  .acd_c {
+    position: static;
+    transform: none;
+    margin-top: %;
+    margin: 10px;
+  }
+
+  .btn_comp,
+  .acd_c {
+    position: static;
+    transform: none;
+    margin: 10px;
+  }
+
+  .rdp {
+    margin-top: 10px;
+  }
+
+  .coment {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .seção {
+    padding: 10px;
+    height: auto;
+  }
+}
