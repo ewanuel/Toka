@@ -1,78 +1,89 @@
 <!DOCTYPE html>
+<html>
 <head>
-
-    <!--charset localiza os caracteres permitindo ç-->
-
     <meta charset="UTF-8">
-
     <title>Toka dos Brinquedos e Colecionaveis</title>
-
     <link rel="stylesheet" href="crie_sua_conta.css">
-
 </head>
 <body>
+    <header id="cab">
+    <div class="b_sup">
 
+    <button class="Cat"><img src="img/icone/menu_burger.png"></button>
 
-    <header id ="cab">
-
-        <div class="bl_p">
-
-        <div class="logo">
-
-        </div>
-        
-        <div class="b_pesqui">
-            <input type="text">
-            <button><img src="imgs/icons/search.png"></button>
-        </div>
-
-        <div class="botões">
-            <a href="main.html#Ini_main"><button class="lg"><img src="imgs/logo/logo.png"></button></a>
-            <a href="main.html#Ini_main"><button class="Inc">Inicio</button></a>
-            <button class="Mb">Mais Brinquedos</button>
-            <a href="main.html#flcs"><button class="Flc">Fale Conosco</button></a>
-            <a href="crie sua conta.html"><button class="Csc">Crie sua conta</button></a>
-            <a href="entrar.html"><button class="Ent">Entar</button></a>
-        </div>
-
+    <div class="lg">
+        <button onclick="window.location.href='main.html#h1'">
+        <img src="img/icone/logo/Toka Logo-01.png">
+        </button>
+    </div>
+    
+    <div class="b_psq">
+        <input type="text">
+        <button class="psq_icon"><img src="img/icone/search-alt-2-regular-24.png"></button>
     </div>
 
+<div class="b_sup_btns">
+        <a href="entrar.html">
+            <button class="Ent">Entrar</button>
+        </a>
+        <a href="crie sua conta.html">
+            <button class="Cr_s_c">Crie sua Conta</button>
+        </a>
+    </div>
+
+    </div>
     </header>
-
-
     <h1>
-        <div class="nome">
-            <p> nome</p>
-            <input type="text">
-        </div>
+        <form action="crie_sua_conta.php" method="post">
+            <div class="nome">
+                <p>Nome</p>
+                <input type="text" name="nome">
+            </div>
 
-        <div class="sobrenome">
-            <p>sobrenome</p>
-            <input type="text">
-        </div>
+            <div class="sobrenome">
+                <p>Sobrenome</p>
+                <input type="text" name="sobrenome">
+            </div>
 
-        <div class="cpf">
-            <p>cpf</p>
-            <input type="text">
-        </div>
+            <div class="cpf">
+                <p>CPF</p>
+                <input type="text" name="cpf">
+            </div>
 
-        <div class="cep">
-            <p>cep</p>
-            <input type="text">
-        </div>
+            <div class="cep">
+                <p>CEP</p>
+                <input type="text" name="cep">
+            </div>
 
-        <div class="email">
-            <p>email</p>
-            <input type="text">
-        </div>
+            <div class="email">
+                <p>Email</p>
+                <input type="text" name="email">
+            </div>
 
-        <div class="senha">
-            <p>senha</p>
-            <input type="text">
-        </div>
+            <div class="senha">
+                <p>Senha</p>
+                <input type="password" name="senha">
+            </div>
 
-        <button class="Ent">Entrar</button>
-        
+            <button class="Ent" type="submit">Cadastrar</button>
+
+            <div id="mensagem"></div>
+
+            <script>
+                // Verificar se há uma mensagem na sessão
+                <?php
+                if (isset($_SESSION["mensagem"])) {
+                ?>
+                    // Exibir a mensagem na div
+                    var mensagemDiv = document.getElementById("mensagem");
+                    mensagemDiv.innerHTML = "<?php echo $_SESSION['mensagem']; ?>";
+                <?php
+                    unset($_SESSION["mensagem"]); // Limpar a mensagem da sessão
+                }
+                ?>
+            </script>
+
+        </form>
     </h1>
-
 </body>
+</html>
