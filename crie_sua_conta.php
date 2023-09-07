@@ -1,14 +1,4 @@
-Copy code
 <?php
-
-$db_file = 'banco_de_cadastro.db';
-
-$conn = new SQLite3($db_file);
-
-if (!$conn) {
-    die("Erro na conexão com o banco de dados: " . $conn->lastErrorMsg());
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
@@ -27,47 +17,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "CEP inválido.";
     } elseif (strlen($senha) < 8) {
         echo "A senha deve ter pelo menos 8 caracteres.";
+    } elseif (!preg_match('/[A-Za-z]/', $senha) || !preg_match('/[0-9]/', $senha)) {
+        echo "A senha deve conter pelo menos uma letra e um número.";
     } else {
-        if (preg_match('/[A-Za-z]/', $senha) && preg_match('/[0-9]/', $senha)) {
-            echo "Senha válida. Força da senha: ";
-            if (strlen($senha) >= 14) {
-                echo "Forte";
-            } elseif (strlen($senha) >= 10) {
-                echo "Média";
-            } else {
-                echo "Fraca";
-            }
+        // Conexão com o banco de dados (substitua os valores conforme sua configuração)
+        $servername = "localhost";
+        $username = "root";
+        $password = "-951753/8520+654";
+        $dbname = "cadastro";
 
-            // Consulta SQL para inserir dados na tabela de usuários
-            $sql = "INSERT INTO tabela_de_usuarios (nome, sobrenome, cpf, cep, email, senha)
-                    VALUES (:nome, :sobrenome, :cpf, :cep, :email, :senha)";
+        $conn = new mysqli($servername, $username, $password, $dbname);
 
-            $stmt = $conn->prepare($sql);
+        // Verifica a conexão com o banco de dados
+        if ($conn->connect_error) {
+            die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+        }
 
-            if ($stmt) {
-                $stmt->bindParam(':nome', $nome);
-                $stmt->bindParam(':sobrenome', $sobrenome);
-                $stmt->bindParam(':cpf', $cpf);
-                $stmt->bindParam(':cep', $cep);
-                $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':senha', $senha);
+        // Prepara a instrução SQL para inserção
+        $sql = "INSERT INTO usuarios (nome, sobrenome, cpf, cep, email, senha) VALUES (?, ?, ?, ?, ?, ?)";
 
-                if ($stmt->execute()) {
-                    echo "<br>Cadastro bem-sucedido!";
-                } else {
-                    echo "<br>Erro ao inserir dados: " . $conn->lastErrorMsg();
-                }
+        // Prepara a declaração SQL
+        $stmt = $conn->prepare($sql);
 
-                $stmt->close();
-            } else {
-                echo "<br>Erro ao preparar a consulta: " . $conn->lastErrorMsg();
-            }
+        if ($stmt === false) {
+            echo "Erro na preparação da consulta.";
         } else {
-            echo "Senha inválida, ela deve conter números e letras.";
+            // Faz o bind dos parâmetros
+            $stmt->bind_param("ssssss", $nome, $sobrenome, $cpf, $cep, $email, $senha);
+
+            // Executa a instrução SQL
+            if ($stmt->execute()) {
+                echo "Cadastro bem-sucedido!";
+            } else {
+                echo "Erro ao cadastrar: " . $stmt->error;
+            }
+
+            // Fecha a declaração e a conexão
+            $stmt->close();
+            $conn->close();
         }
     }
 }
-
-// Feche a conexão com o banco de dados
-$conn->close();
 ?>
