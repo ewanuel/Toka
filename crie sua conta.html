@@ -12,7 +12,7 @@
     <button class="Cat"><img src="img/icone/menu_burger.png"></button>
 
     <div class="lg">
-        <button onclick="window.location.href='main.html#h1'">
+        <button onclick="window.location.href='index.html'">
         <img src="img/icone/logo/Toka Logo-01.png">
         </button>
     </div>
@@ -47,12 +47,12 @@
 
             <div class="cpf">
                 <p>CPF</p>
-                <input type="text" name="cpf">
+                <input type="text" name="cpf" id="cpf">
             </div>
 
             <div class="cep">
                 <p>CEP</p>
-                <input type="text" name="cep">
+                <input type="text" name="cep" id="cep">
             </div>
 
             <div class="email">
@@ -69,21 +69,27 @@
 
             <div id="mensagem"></div>
 
-            <script>
-                // Verificar se há uma mensagem na sessão
-                <?php
-                if (isset($_SESSION["mensagem"])) {
-                ?>
-                    // Exibir a mensagem na div
-                    var mensagemDiv = document.getElementById("mensagem");
-                    mensagemDiv.innerHTML = "<?php echo $_SESSION['mensagem']; ?>";
-                <?php
-                    unset($_SESSION["mensagem"]); // Limpar a mensagem da sessão
-                }
-                ?>
-            </script>
-
         </form>
     </h1>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Função para formatar o CPF com pontos
+            $('#cpf').on('input', function () {
+                let cpf = $(this).val().replace(/\D/g, '');
+                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                $(this).val(cpf);
+            });
+
+            // Função para formatar o CEP com traços
+            $('#cep').on('input', function () {
+                let cep = $(this).val().replace(/\D/g, '');
+                cep = cep.replace(/(\d{5})(\d{3})/, '$1-$2');
+                $(this).val(cep);
+            });
+        });
+    </script>
+
 </body>
 </html>
