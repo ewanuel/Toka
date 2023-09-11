@@ -1,0 +1,144 @@
+
+
+.b_sup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-color: black;
+    z-index: 9999;
+  }
+  
+  
+  .Cat {
+    position: fixed;
+    top: -230px;
+    left: -230px;
+    transform: scale(0.05);
+    background-color: transparent;
+    border: none;
+  }
+  
+  .lg  button{
+    position: fixed;
+    top: -1022px;
+    left: -955px;
+    transform: scale(0.05);
+    background-color: transparent;
+    border:transparent;
+  }
+  
+  .b_psq {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: scale(1);
+  }
+  
+  .b_psq button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    transform: scale(0.8);
+  }
+  
+  .b_sup_btns{
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateX(0%);
+    }
+    
+  .b_sup_btns button{
+    margin: 2px;
+  }
+  
+  .Cr_s_c,
+  .Ent{
+    background-color: wheat;
+  }
+
+  h1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 p{
+    font-size: 15px;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 25px;
+    padding-bottom: px;
+}
+
+h1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .Nome p,
+  .Img_pdt p,
+  .dscr p,
+  .Preço p,
+  .catg p,
+  .tags p {
+      margin-top: 25px; 
+      margin-bottom: -10px; 
+  }
+ 
+  .Ent {
+    margin-top: 25px;
+  }
+
+  input[type="checkbox"],
+  label {
+      font-family: "Segoe UI Light", "Segoe UI", sans-serif; /* Sua fonte desejada */
+  }
+
+  input[type="checkbox"] {
+    display: none; 
+}
+
+/* Estiliza o rótulo que substituirá a aparência da checkbox */
+input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 30px; 
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* Estiliza o ícone da checkbox (ícone de seleção) */
+input[type="checkbox"] + label:before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 5px; 
+    width: 10px;
+    height: 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+/* Estiliza o ícone de seleção quando a checkbox estiver marcada */
+input[type="checkbox"]:checked + label:before {
+    background-color: #000;
+}
+
+
