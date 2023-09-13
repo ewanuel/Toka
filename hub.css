@@ -1,0 +1,111 @@
+h1 {
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    overflow: hidden;
+}
+
+.logo {
+    max-width: 60%;
+    margin-left: 15%;
+}
+.logotxt {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 60%;
+    top: -150px;
+    position: relative;
+    left: 9%;
+    white-space: nowrap;
+}
+
+.inst,
+.fac img, 
+.zap{
+    position: relative;
+    margin: 10px;
+    max-width: 10%;
+    margin-top: -10%; 
+    border-radius: 4000px;
+}
+
+.zaptxt {
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 15px;
+    margin-top: 0px;
+    position: relative;
+    left: 12%;
+    white-space: nowrap;
+}
+
+.loja_png {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    position: relative;
+    margin-right: 10px;
+    right: 0; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), transparent), url("troca/loja.png");
+    border-radius: 10px; 
+  }
+  
+  .loja_txt {
+    font-size: 50%;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    text-align: left;
+    margin-top: -190px;
+    margin-right: 10px;
+  }
+
+  .loja_txt2 {
+    font-size: 20px;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    text-align: left;
+    margin-top: -19px;
+    margin-right: 10px;
+  }
+
+
+.loja_android_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .loja_png {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .loja_txt {
+    display: none; /* Esconde o elemento .loja_txt em dispositivos Android */
+  }
+}
+
+  .people {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 100%;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 60%;
+  }
+
+  .people img {
+    max-width: 70px;
+    height: 70px;
+    display: block;
+    margin: 20px;
+    border-radius: 40px;
+  }
+  
