@@ -1,9 +1,16 @@
+body {
+  margin: 0;
+  padding: 0;
+}
 h1 {
+    margin: 0;
+    padding: 0;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     text-align: center;
     overflow: hidden;
+    background-color: black;
 }
 
 .logo {
@@ -11,8 +18,9 @@ h1 {
     margin-left: 15%;
 }
 .logotxt {
+  color: white;
     font-family: "Segoe UI Light", "Segoe UI", sans-serif;
-    font-size: 60%;
+    font-size: 70%;
     top: -150px;
     position: relative;
     left: 9%;
@@ -30,6 +38,7 @@ h1 {
 }
 
 .zaptxt {
+    color: white;
     font-family: "Segoe UI Light", "Segoe UI", sans-serif;
     font-size: 15px;
     margin-top: 0px;
@@ -51,14 +60,16 @@ h1 {
   }
   
   .loja_txt {
+    color:white; 
     font-size: 50%;
-    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;  
     text-align: left;
     margin-top: -190px;
     margin-right: 10px;
   }
 
   .loja_txt2 {
+    color:white;
     font-size: 20px;
     font-family: "Segoe UI Light", "Segoe UI", sans-serif;
     text-align: left;
@@ -109,3 +120,8 @@ h1 {
     border-radius: 40px;
   }
   
+  .ptxt1,
+  .ptxt2,
+  .ptxt3 {
+    color: white;
+  }

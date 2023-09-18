@@ -33,16 +33,18 @@
         </div>
         </header>
 
-        <h1>
+    <h1>
+    <div class="container">
 
+        <form method="POST" action="">
             <div class="Nome">
                 <p>Nome do produto</p>
-                <input type="text">
+                <input type="text" name="Nome">
             </div>
 
             <div class="Img_pdt">
                 <p>Imagem do produto</p>
-                <input type="file" id="imagemProduto" accept="image/*">
+                <input type="file" id="imagemProduto" accept="image/*" name="Img_pdt">
                 <div id="imagemPreview">
                     <img id="previewImg" src="" alt="">
                     <button class="out_img" onclick="addimg()">adicionar outra imagem</button>
@@ -51,39 +53,39 @@
 
             <div class="Preço">
                 <p>Preço do Produto</p>
-                <input type="text">
+                <input type="text" name="Preço">
             </div>
 
             <div class="dscr">
                 <p>Descrição do produto</p>
-                <input type="text">
+                <input type="text" name="dscr">
             </div>
 
             <div class="tags">
                 <p>tags</p>
-                <input type="text">
+                <input type="text" name="tags">
             </div>
 
             <p class="es">ficha técnica</p>
 
             <div class="espec">
-                <input type="text">
+            <input type="text" name="espec">
                 <button class="out_espec" onclick="addespec()">adicionar outra espec</button>
             </div>
 
             <div class="catg">
                 <p>Escolha a Categoria</p>
-                <input type="checkbox" id="Cat_cards">
+                <input type="checkbox" id="Cat_cards"name="catg[]">
                 <label for="Cat_cards">Cards</label>
-                <input type="checkbox" id="Cat_games">
+                <input type="checkbox" id="Cat_games"name="catg[]">
                 <label for="Cat_games">Games</label>
-                <input type="checkbox" id="Cat_geeks">
+                <input type="checkbox" id="Cat_geeks"name="catg[]">
                 <label for="Cat_geeks">Geeks</label>
-                <input type="checkbox" id="Cat_livros">
+                <input type="checkbox" id="Cat_livros"name="catg[]">
                 <label for="Cat_livros">Livros</label>
-                <input type="checkbox" id="Cat_pedagogicos">
+                <input type="checkbox" id="Cat_pedagogicos"name="catg[]">
                 <label for="Cat_pedagogicos">Pedagogicos</label>
-                <input type="checkbox" id="Cat_pelucias">
+                <input type="checkbox" id="Cat_pelucias"name="catg[]">
                 <label for="Cat_pelucias">Pelucias</label>
             </div>
 
@@ -95,8 +97,9 @@
             <div class="cadastrar">
                 <button class="cadast" type="submit">cadastrar</button>
             </div>
-
-        </h1>
+        </form>
+    </div>
+    </h1>
         <section id="previewSection" class="seção" style="display: none;">
                 
             <div class="produt">
@@ -132,6 +135,48 @@
             </div>
         
     </section>
+
+<?php 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Receba os valores do formulário
+    $Nome = $_POST["Nome"];
+    $Img_pdt = $_POST["Img_pdt"];
+    $Preço = $_POST["Preço"];
+    $dscr = $_POST["dscr"];
+    $tags = $_POST["tags"];
+    $espec = $_POST["espec"];
+    
+    // Verificar se o array $_POST["catg"] está definido e não está vazio
+    if (isset($_POST["catg"]) && !empty($_POST["catg"])) {
+        $catg = $_POST["catg"];
+    } else {
+        // Se nenhum checkbox foi marcado, defina $catg como um array vazio
+        $catg = array();
+    }
+
+    // Verificar se algum campo obrigatório está vazio
+    if (empty($Nome) || empty($Img_pdt) || empty($Preço) || empty($dscr) || empty($tags) || empty($espec) || empty($catg)) {
+        $erro = true; // Defina a variável de erro como true se um campo estiver vazio
+    }
+
+    if (!$erro) {
+        // Preparar e executar a instrução SQL para inserir os dados no banco de dados
+        $sql = "INSERT INTO sua_tabela (Nome, Img_pdt, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssssss", $Nome, $Img_pdt, $Preço, $dscr, $tags, $espec, implode(',', $catg));
+        
+        if ($stmt->execute()) {
+            // Inserção bem-sucedida, você pode redirecionar o usuário para outra página, exibir uma mensagem de sucesso, etc.
+            echo "Produto cadastrado com sucesso!";
+        } else {
+            echo "Erro ao cadastrar o produto: " . $conn->error;
+        }
+
+        // Feche a conexão com o banco de dados
+        $stmt->close();
+    }
+}
+?>
 
 <!--Preview da imagem-->
 
