@@ -36,7 +36,7 @@
     <h1>
     <div class="container">
 
-        <form method="POST" action="">
+        <form method="POST" action="" enctype="multipart/form-data">
             <div class="Nome">
                 <p>Nome do produto</p>
                 <input type="text" name="Nome">
@@ -136,47 +136,81 @@
         
     </section>
 
-<?php 
+    <?php
+
+// Etapa 1: Configurar a conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cadastros";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexão com o banco de dados falhou: " . $conn->connect_error);
+}
+
+// Etapa 2: Receber os dados do formulário
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Receba os valores do formulário
-    $Nome = $_POST["Nome"];
-    $Img_pdt = $_POST["Img_pdt"];
-    $Preço = $_POST["Preço"];
-    $dscr = $_POST["dscr"];
-    $tags = $_POST["tags"];
-    $espec = $_POST["espec"];
+    $nomeProduto = $_POST["Nome"];
+    $Img_pdt = ["Img_pdt"];
+    $precoProduto = $_POST["Preço"];
+    $descricaoProduto = $_POST["dscr"];
+    $tagsProduto = $_POST["tags"];
+    $especsProduto = $_POST["espec"];
+    $categoriasProduto = implode(", ", $_POST["catg"]); // Transforma o array em uma string separada por vírgulas
+
+if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        // Crie o diretório se ele não existir
+        mkdir($targetDirectory, 0777, true);
+    }
     
-    // Verificar se o array $_POST["catg"] está definido e não está vazio
-    if (isset($_POST["catg"]) && !empty($_POST["catg"])) {
-        $catg = $_POST["catg"];
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
+
+
+    if (move_uploaded_file($_FILES["Img_pdt"]["tmp_name"], $targetFile)) {
+        $imagemProduto = $_FILES["Img_pdt"]["name"];
+        // Restante do código de upload
     } else {
-        // Se nenhum checkbox foi marcado, defina $catg como um array vazio
-        $catg = array();
+        // Tratar o caso em que o arquivo não foi movido corretamente
+        echo "Erro ao enviar a imagem.";
     }
+} else {
+    // Tratar o caso em que o arquivo não foi enviado corretamente
+    echo "Erro ao enviar a imagem.";
+}
+    // Etapa 3: Processar os dados (validações, etc.)
 
-    // Verificar se algum campo obrigatório está vazio
-    if (empty($Nome) || empty($Img_pdt) || empty($Preço) || empty($dscr) || empty($tags) || empty($espec) || empty($catg)) {
-        $erro = true; // Defina a variável de erro como true se um campo estiver vazio
-    }
+    // Etapa 4: Fazer o upload da imagem (se necessário)
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
 
-    if (!$erro) {
-        // Preparar e executar a instrução SQL para inserir os dados no banco de dados
-        $sql = "INSERT INTO sua_tabela (Nome, Img_pdt, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssss", $Nome, $Img_pdt, $Preço, $dscr, $tags, $espec, implode(',', $catg));
-        
+    // Etapa 5: Inserir os dados no banco de dados
+    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt) {
+        $stmt->bind_param("ssdssss", $nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+
         if ($stmt->execute()) {
-            // Inserção bem-sucedida, você pode redirecionar o usuário para outra página, exibir uma mensagem de sucesso, etc.
             echo "Produto cadastrado com sucesso!";
         } else {
-            echo "Erro ao cadastrar o produto: " . $conn->error;
+            echo "Erro ao cadastrar o produto: " . $stmt->error;
         }
 
-        // Feche a conexão com o banco de dados
         $stmt->close();
+    } else {
+        echo "Erro na preparação da declaração SQL: " . $conn->error;
     }
+
+    // Fechar a conexão com o banco de dados
+    $conn->close();
 }
 ?>
+
 
 <!--Preview da imagem-->
 

@@ -20,10 +20,10 @@ h1 {
 .logotxt {
   color: white;
     font-family: "Segoe UI Light", "Segoe UI", sans-serif;
-    font-size: 70%;
-    top: -150px;
+    font-size: 45%;
+    top: -40px;
     position: relative;
-    left: 9%;
+    left: 8%;
     white-space: nowrap;
 }
 
@@ -32,8 +32,7 @@ h1 {
 .zap{
     position: relative;
     margin: 10px;
-    max-width: 10%;
-    margin-top: -10%; 
+    max-width: 7%; 
     border-radius: 4000px;
 }
 
@@ -110,13 +109,14 @@ h1 {
     margin-top: 100%;
     font-family: "Segoe UI Light", "Segoe UI", sans-serif;
     font-size: 60%;
+    margin: 20px;
   }
 
   .people img {
     max-width: 70px;
     height: 70px;
     display: block;
-    margin: 20px;
+
     border-radius: 40px;
   }
   
@@ -125,3 +125,84 @@ h1 {
   .ptxt3 {
     color: white;
   }
+
+  .destaques {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha em telas menores */
+    justify-content: center; /* Centralize horizontalmente os elementos filhos */
+    align-items: center; /* Centralize verticalmente os elementos filhos */
+    margin-top: 30%/* Adicione margem superior para espaçamento */
+  }
+  
+  /* Defina uma largura máxima para os elementos da classe "destaques" */
+    
+  .pro1, .pro2, .pro3 {
+    text-align: center;
+    margin: 10px; /* Adicione margem para espaçamento entre os elementos */
+    max-width: 200px; /* Ajuste a largura máxima conforme necessário */
+    color: white !important; /* Defina a cor do texto como branco com !important */
+  }
+  
+  /* Estilize as imagens dentro dos elementos "pro" conforme necessário */
+  .pro1 img, .pro2 img, .pro3 img {
+    max-width: 100%; /* Garanta que as imagens se redimensionem automaticamente */
+    height: auto;
+    border-radius: 100px;
+
+  }
+
+/* CSS para elementos visuais nos cantos */
+.corner-box {
+  position: fixed;
+  width: 100px;
+  height: 100px;
+  content: '';
+}
+
+/* Canto superior esquerdo */
+.top-left::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, #00FF00, transparent);
+  border-radius: 50%;
+}
+
+/* Canto superior direito */
+.top-right::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #000080 49.5%, transparent 49.5%, transparent 50.5%, #000080 50.5%);
+}
+
+/* Canto inferior esquerdo */
+.bottom-left::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: polygon(0% 100%, 100% 100%, 50% 0%, 0% 100%);
+  background-color: #FFFF00;
+}
+
+/* Canto inferior direito */
+.bottom-right::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent 49.5%, #00FF00 49.5%, #00FF00 50.5%, transparent 50.5%);
+}
+
+/* Outros estilos CSS existentes */

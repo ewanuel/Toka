@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Conexão com o banco de dados (substitua os valores conforme sua configuração)
         $servername = "localhost";
         $username = "root";
-        $password = "-951753/8520+654";
+        $password = "";
         $dbname = "cadastro";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
