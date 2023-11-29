@@ -44,30 +44,70 @@
 
 
     
-    <section class="seção">
-        <h1>
-            <div class="produt">
-                <img src="img/fts/Produtos/product_1.jpg">
+
+    <?php 
+    $servername = "localhost";
+    $username = "root";
+    $password = "-951753/8520+654";
+    $dbname = "cadastros";
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+
+    $produto_id = $_GET['produto_id'];
+
+    $sql = "SELECT Nome, Img_pdt, Preço, dscr, tags, espec, catg FROM cadastros WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+
+    
+    if ($stmt) {
+        $stmt->bind_param("i", $produto_id);
+        $stmt->execute();
+        $stmt->bind_result($nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+
+        if ($stmt->fetch()) {
+            
+
+?>
+
+        <div class="product-image">
+                <img src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
             </div>
-            <div class="produt_n">
-                <p>Fisher Price BeatBo</p>
-            </div>
-            <div class="desconto">
-                <p>X%</p>
-            </div>
-            <div class="preco">
-                <p>R$40,00</p>
-            </div>
-            <div class="btn_comp">
-                <button><p>Adicionar ao carrinho</p></button>
-            <div class="a_vist">
-                
-            </div>
-            <div class="acd_c">
-                <button>Comprar</button>
-            </div>
-            </div>
+
+
+                <div class="product_n">
+                    <p><?php echo $nomeProduto; ?></p>
+                </div>
+                <div class="preco">
+                    <p>R$<?php echo number_format($precoProduto, 2, ',', '.'); ?></p>
+                </div>
+                <div class="desconto">
+                <!-- Adicione aqui o código para exibir o desconto, se aplicável -->
+                </div>
+
+
+
+                <div class="btn_comp">
+                    <button><p>Adicionar ao carrinho</p></button>
+                </div>
+                <div class="a_vist">
+                <!-- Adicione aqui o código para exibir as informações adicionais, se necessário -->
+                </div>
+                <div class="acd_c">
+                    <button>Comprar</button>
+                </div>
+
+
             <hr class="linha">
+            <div class="coment">
+                <!-- Adicione aqui o código para exibir os comentários, se necessário -->
+            </div>
+
+            <?php
+        }
+    }
+    $conn->close();
+?>
+
             <div class="coment">
                 <div class="coment_txt">
                     <p>Comentários</p>

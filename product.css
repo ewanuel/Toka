@@ -4,15 +4,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 45px;
+  height: 7%;
   background-color: black;
   z-index: 9999;
 }
 
 .Cat {
   position: fixed;
-  top: -230px;
-  left: -230px;
+  top: -230%;
+  left: -230%;
   transform: scale(0.05);
   background-color: transparent;
   border: none;
@@ -20,8 +20,8 @@
 
 .lg  button{
   position: fixed;
-  top: -1022px;
-  left: -955px;
+  top: -1022%;
+  left: -955%;
   transform: scale(0.05);
   background-color: transparent;
   border:transparent;
@@ -67,249 +67,157 @@
   background-color: wheat;
 }
 
-/* Adaptação para dispositivos Moveis */
-@media only screen and (max-width: 600px) {
-  .b_sup {
-      height: 40px; 
-  }
-
-  .Cat {
-      position: relative;
-      transform: scale(0.); 
-  }
-
-  .b_sup_btns {
-      position: absolute;
-      top: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      height: 100%;
-  }
-
-  .lg button {
-      position: relative;
-      transform: scale(0.03);
-      margin-top: -505px; 
-  }
-
-  .b_psq {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.7);
-
- 
-  .Cr_s_c,
-  .Ent {
-      background-color: wheat;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      margin: 2px;
-      transform: scale(0.7);
-  }
-
-  
-  .b_psq input[type="text"] {
-      width: 100%;
-      padding: 5px;
-      border-radius: 5px;
-  }
-}
-}
 
 body {
-background-color: rgb(243, 250, 253);
-flex-direction: column;
-align-items: center;
+  background-color: rgb(243, 250, 253);
+  flex-direction: column;
+  align-items: center;
+  }
+ 
+
+  .product-image {
+    margin-top: 7%;
+    width: 100%;
+    max-width: 400px; /* ou ajuste conforme necessário */
+    height: 400px; /* ajuste conforme necessário */
+    overflow: hidden;
+    margin-right: auto; /* alinha à esquerda */
+    border-radius: 10%;
 }
 
-.produt {
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product_n {
+  position: absolute;
+  margin-left: 70%;
+ margin-top: -350px;
+}
+
+.product_n p {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.preco p {
   position: relative;
-  text-align: left;
-  margin-top: 100px;
-}
-
-.produt img {
-  position: relative;
-  align-items: left;
-  top: -180px ;
-  right: 180px;
-  max-width: 350px;
-  border-radius: 5%;
-}
-
-.produt_n {
-  position: absolute;
-  font-size: 30px;
-  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
-  right: -70px;
-  top: 30%;
-  transform: translate(-50%, -50%);
-}
-
-.desconto {
-  position: absolute;
-  font-size: 22px;
-  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
-  right: 165px;
-  top: 205px;
-}
-
-.preco {
-  position: absolute;
-  font-size: 25px;
-  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
-  right: 200px;
-  top: 200px;
-}
-
-.descr{
-  position: absolute;
-  font-size:15px;
-  right: 10;
-  top: 200px;
+    font-size: 45px;
+    left: 75%;
+    top: -225px;
 }
 
 .btn_comp {
-  position: absolute;
-  font-size: 20px;
-  right: 40px;
-  top: 350px;
-  background-color: #ffc400;
-  border-radius: 10px;
-  margin-top: 10px;
-  align-items: center;
-  color: white;
-}
-
-
-.acd_c {
-  position: absolute;
-  font-size: 20px;
-  right: 180px;
-  background-color: #ffc400;
-  border-radius: 10px;
-  margin-top: -25px;
-  align-items: center;
-  color: white;
-}
-
-.btn_comp{
-  color: white
-}
-
-
-
-.rdp {
-  display: flex; 
-  align-items: center; 
-  margin-top: 650px;
-  width: 100%;
-  height: 45px;
-  background-color: black;
-  z-index: 9999;
-}
-
-.rdp img {
-  width: 30px;
-  height: 30px;
-  margin-right: 15px; 
-}
-
-button {
-  margin-right: 20px; 
-  border: none; 
-  background-color: transparent; 
-  cursor: pointer; 
-}
-
-.zaptxt{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  color: white;
-  margin: 5px;
-}
-.email {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 17px;
-  color: white;
-  margin: 10px 50px; 
-}
-
-.inst{
-  border-radius: 40px;
-}
-
-.seção{
-  background-color: white;
-  padding: 200px;
-  margin: 15px;
-  border: 1px solid #ccc;
-  height: 600px;
-  overflow-y: auto;
-}
-
-.coment{
-  position: absolute;
-  font-family: "Segoe UI Light", "Segoe UI", sans-serif;
-  top: 650px;
-  right: 500px;
-}
-
-.esc{
-  font-size: 70%;
-}
-
-.linha{
   position: relative;
-  width: 300px; 
+margin-left: 80%;
+margin-top: -250px;
+}
+.acd_c {
+    position: relative;
+  margin-left: 85%;
 }
 
-/* Mobile Styles */
-@media screen and (max-width: 768px) {
-  .produt img {
-    right: 0;
-    margin-top: 25%;
-    max-width: 100%;
-  }
+.btn_comp button,
+.acd_c button {
+    background-color: #ffc400;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1% 1%;
+    border: none;
+    border-radius: 25%;
+    margin-right: 10%;
+    cursor: pointer;
+}
 
-  .produt_n,
-  .desconto,
-  .preco {
-    position: static;
-    transform: none;
-    margin-top: %;
-    margin: px;
+.linha {
+    margin-top: 20px;
+}
+  
+  .zaptxt{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: white;
+    margin: 5px;
   }
-
-  .btn_comp,
-  .acd_c {
-    position: static;
-    transform: none;
-    margin-top: %;
-    margin: 10px;
+  .email {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: white;
+    margin: 10px 50px; 
   }
-
-  .btn_comp,
-  .acd_c {
-    position: static;
-    transform: none;
-    margin: 10px;
+  
+  .inst{
+    border-radius: 40px;
   }
-
+  
+  .seção{
+    background-color: white;
+    padding: 200px;
+    margin: 15px;
+    border: 1px solid #ccc;
+    height: 600px;
+    overflow-y: auto;
+  }
+  
+  .coment{
+    position: absolute;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    top: 650px;
+    right: 500px;
+  }
+  
+  .esc{
+    font-size: 70%;
+  }
+  
+  .linha{
+    position: relative;
+    margin-top: 150px;
+    width: 300px; 
+  }
+  
   .rdp {
-    margin-top: 10px;
+    display: flex; 
+    align-items: center; 
+    margin-top: 650px;
+    width: 100%;
+    height: 45px;
+    background-color: black;
+    z-index: 9999;
   }
-
-  .coment {
-    position: static;
-    margin-top: 10px;
+  
+  .rdp img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px; 
   }
-
-  .seção {
-    padding: 10px;
-    height: auto;
+  
+  @media only screen and (max-width: 600px) {
+    .b_sup_btns {
+      display: block; /* Altera para empilhar verticalmente */
+      text-align: right; /* Alinha ao centro para dispositivos menores */
+    }
+  
+    .product_n {
+      position: relative;
+      margin-left: 0;
+      margin-top: 10px; /* Ajuste conforme necessário */
+      text-align: center; /* Alinha ao centro para dispositivos menores */
+    }
+  
+    .preco p {
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+  
+    .btn_comp, .acd_c {
+      position: relative;
+      margin-left: 0;
+      margin-top: 10px; /* Ajuste conforme necessário */
+      text-align: center; /* Alinha ao centro para dispositivos menores */
+    }
   }
-}
+  

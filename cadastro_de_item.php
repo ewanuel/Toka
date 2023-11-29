@@ -1,3 +1,80 @@
+<?php
+
+// Etapa 1: Configurar a conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "-951753/8520+654";
+$dbname = "cadastros";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Conexão com o banco de dados falhou: " . $conn->connect_error);
+}
+
+// Etapa 2: Receber os dados do formulário
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nomeProduto = $_POST["Nome"];
+    $Img_pdt = $_FILES["Img_pdt"];
+    $precoProduto = $_POST["Preço"];
+    $descricaoProduto = $_POST["dscr"];
+    $tagsProduto = $_POST["tags"];
+    $especsProduto = $_POST["espec"];
+
+if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        // Crie o diretório se ele não existir
+        mkdir($targetDirectory, 0777, true);
+    }
+    
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
+
+
+    if (move_uploaded_file($_FILES["Img_pdt"]["tmp_name"], $targetFile)) {
+        $imagemProduto = $_FILES["Img_pdt"]["name"];
+        // Restante do código de upload
+    } else {
+        // Tratar o caso em que o arquivo não foi movido corretamente
+        echo "Erro ao enviar a imagem.";
+    }
+} else {
+    // Tratar o caso em que o arquivo não foi enviado corretamente
+    echo "Erro ao enviar a imagem.";
+}
+    // Etapa 3: Processar os dados (validações, etc.)
+
+    // Etapa 4: Fazer o upload da imagem (se necessário)
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+
+    var_dump($nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+
+    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    
+    $categoriasSelecionadas = $_POST['catg'] ?? array(); // Certifique-se de definir um valor padrão se nenhuma categoria for selecionada
+    $categoriasProduto = implode(', ', $categoriasSelecionadas);
+
+    if ($stmt) {
+        $stmt->bind_param("ssdssss", $nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+    
+        if ($stmt->execute()) {
+            // Redirecionar após o sucesso da inserção
+            header("Location: product.php?produto_id=" . $stmt->insert_id);
+            exit(); // Certifique-se de sair após o redirecionamento
+        } else {
+            echo "Erro ao cadastrar o produto: " . $stmt->error;
+        }
+    
+        $stmt->close();
+    } else {
+        echo "Erro na preparação da declaração SQL: " . $conn->error;
+    }
+}    
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -135,82 +212,6 @@
             </div>
         
     </section>
-
-    <?php
-
-// Etapa 1: Configurar a conexão com o banco de dados
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "cadastros";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Conexão com o banco de dados falhou: " . $conn->connect_error);
-}
-
-// Etapa 2: Receber os dados do formulário
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nomeProduto = $_POST["Nome"];
-    $Img_pdt = ["Img_pdt"];
-    $precoProduto = $_POST["Preço"];
-    $descricaoProduto = $_POST["dscr"];
-    $tagsProduto = $_POST["tags"];
-    $especsProduto = $_POST["espec"];
-    $categoriasProduto = implode(", ", $_POST["catg"]); // Transforma o array em uma string separada por vírgulas
-
-if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) {
-    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
-    $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
-
-    if (!is_dir($targetDirectory)) {
-        // Crie o diretório se ele não existir
-        mkdir($targetDirectory, 0777, true);
-    }
-    
-    $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
-
-
-    if (move_uploaded_file($_FILES["Img_pdt"]["tmp_name"], $targetFile)) {
-        $imagemProduto = $_FILES["Img_pdt"]["name"];
-        // Restante do código de upload
-    } else {
-        // Tratar o caso em que o arquivo não foi movido corretamente
-        echo "Erro ao enviar a imagem.";
-    }
-} else {
-    // Tratar o caso em que o arquivo não foi enviado corretamente
-    echo "Erro ao enviar a imagem.";
-}
-    // Etapa 3: Processar os dados (validações, etc.)
-
-    // Etapa 4: Fazer o upload da imagem (se necessário)
-    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
-
-    // Etapa 5: Inserir os dados no banco de dados
-    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-
-    if ($stmt) {
-        $stmt->bind_param("ssdssss", $nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
-
-        if ($stmt->execute()) {
-            echo "Produto cadastrado com sucesso!";
-        } else {
-            echo "Erro ao cadastrar o produto: " . $stmt->error;
-        }
-
-        $stmt->close();
-    } else {
-        echo "Erro na preparação da declaração SQL: " . $conn->error;
-    }
-
-    // Fechar a conexão com o banco de dados
-    $conn->close();
-}
-?>
-
 
 <!--Preview da imagem-->
 
