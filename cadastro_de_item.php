@@ -21,6 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tagsProduto = $_POST["tags"];
     $especsProduto = $_POST["espec"];
 
+//imagem pdt1
+
 if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) {
     $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
     $targetFile = $targetDirectory . basename($_FILES["Img_pdt"]["name"]);
@@ -44,6 +46,111 @@ if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) 
     // Tratar o caso em que o arquivo não foi enviado corretamente
     echo "Erro ao enviar a imagem.";
 }
+
+//Imagem pdt2
+
+if (isset($_FILES["Img_pdt2"]) && $_FILES["Img_pdt2"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt2"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        // Crie o diretório se ele não existir
+        mkdir($targetDirectory, 0777, true);
+    }
+    
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt2"]["name"]);
+
+
+    if (move_uploaded_file($_FILES["Img_pdt2"]["tmp_name"], $targetFile)) {
+        $imagemProduto = $_FILES["Img_pdt2"]["name"];
+        // Restante do código de upload
+    } else {
+        // Tratar o caso em que o arquivo não foi movido corretamente
+        echo "Erro ao enviar a imagem.";
+    }
+} else {
+    // Tratar o caso em que o arquivo não foi enviado corretamente
+    echo "Erro ao enviar a imagem.";
+}
+
+//imagem pdt3
+
+if (isset($_FILES["Img_pdt3"]) && $_FILES["Img_pdt3"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt3"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        // Crie o diretório se ele não existir
+        mkdir($targetDirectory, 0777, true);
+    }
+    
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt3"]["name"]);
+
+
+    if (move_uploaded_file($_FILES["Img_pdt3"]["tmp_name"], $targetFile)) {
+        $imagemProduto = $_FILES["Img_pdt3"]["name"];
+        // Restante do código de upload
+    } else {
+        // Tratar o caso em que o arquivo não foi movido corretamente
+        echo "Erro ao enviar a imagem.";
+    }
+} else {
+    // Tratar o caso em que o arquivo não foi enviado corretamente
+    echo "Erro ao enviar a imagem.";
+}
+
+//imagem pdt4
+
+if (isset($_FILES["Img_pdt4"]) && $_FILES["Img_pdt4"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt4"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        // Crie o diretório se ele não existir
+        mkdir($targetDirectory, 0777, true);
+    }
+    
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt4"]["name"]);
+
+
+    if (move_uploaded_file($_FILES["Img_pdt4"]["tmp_name"], $targetFile)) {
+        $imagemProduto = $_FILES["Img_pdt4"]["name"];
+        // Restante do código de upload
+    } else {
+        // Tratar o caso em que o arquivo não foi movido corretamente
+        echo "Erro ao enviar a imagem.";
+    }
+} else {
+    // Tratar o caso em que o arquivo não foi enviado corretamente
+    echo "Erro ao enviar a imagem.";
+}
+
+//imagem pdt5
+
+if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt5"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        // Crie o diretório se ele não existir
+        mkdir($targetDirectory, 0777, true);
+    }
+    
+    $targetFile = $targetDirectory . basename($_FILES["Img_pdt5"]["name"]);
+
+
+    if (move_uploaded_file($_FILES["Img_pdt5"]["tmp_name"], $targetFile)) {
+        $imagemProduto = $_FILES["Img_pdt5"]["name"];
+        // Restante do código de upload
+    } else {
+        // Tratar o caso em que o arquivo não foi movido corretamente
+        echo "Erro ao enviar a imagem.";
+    }
+} else {
+    // Tratar o caso em que o arquivo não foi enviado corretamente
+    echo "Erro ao enviar a imagem.";
+}
+
     // Etapa 3: Processar os dados (validações, etc.)
 
     // Etapa 4: Fazer o upload da imagem (se necessário)
@@ -74,6 +181,7 @@ if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) 
     }
 }    
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -121,12 +229,40 @@ if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) 
 
             <div class="Img_pdt">
                 <p>Imagem do produto</p>
-                <input type="file" id="imagemProduto" accept="image/*" name="Img_pdt">
-                <div id="imagemPreview">
-                    <img id="previewImg" src="" alt="">
-                    <button class="out_img" onclick="addimg()">adicionar outra imagem</button>
+                <input type="file" id="imagemProduto1" accept="image/*" name="Img_pdt">
+                <div id="imagemPreview1">
+                    <img id="previewImg1" src="" alt="">
                 </div>
             </div>
+
+            <div class="Img_pdt2">
+                <input type="file" id="imagemProduto2" accept="image/*" name="Img_pdt2">
+                <div id="imagemPreview2">
+                    <img id="previewImg2" src="" alt="">
+                </div>
+            </div>
+
+            <div class="Img_pdt3">
+                <input type="file" id="imagemProduto3" accept="image/*" name="Img_pdt3">
+                <div id="imagemPreview3">
+                    <img id="previewImg3" src="" alt="">
+                </div>
+            </div>
+
+            <div class="Img_pdt4">
+                <input type="file" id="imagemProduto4" accept="image/*" name="Img_pdt4">
+                <div id="imagemPreview4">
+                    <img id="previewImg4" src="" alt="">
+                </div>
+            </div>
+
+            <div class="Img_pdt5">
+                <input type="file" id="imagemProduto5" accept="image/*" name="Img_pdt5">
+                <div id="imagemPreview5">
+                    <img id="previewImg5" src="" alt="">
+                </div>
+            </div>
+
 
             <div class="Preço">
                 <p>Preço do Produto</p>

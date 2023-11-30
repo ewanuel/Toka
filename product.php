@@ -73,6 +73,13 @@
                 <img src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
             </div>
 
+            <div class="additional-images">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem2.jpg">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem3.jpg">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem4.jpg">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem5.jpg">
+            </div>
+        </div>
 
                 <div class="product_n">
                     <p><?php echo $nomeProduto; ?></p>
@@ -128,5 +135,15 @@
         <p class="email">Toka.curitiba@gmail.com</p>
     </div>
 
-    
-</body>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const additionalImages = document.querySelectorAll('.additional-image');
+        const mainImage = document.querySelector('.product-image img');
+
+        additionalImages.forEach(function (image) {
+            image.addEventListener('mouseover', function () {
+                mainImage.src = image.src;
+            });
+        });
+    });
+</script>
