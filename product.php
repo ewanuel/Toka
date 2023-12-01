@@ -46,26 +46,43 @@
     
 
     <?php 
-    $servername = "localhost";
-    $username = "root";
-    $password = "-951753/8520+654";
-    $dbname = "cadastros";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    $produto_id = $_GET['produto_id'];
-
-    $sql = "SELECT Nome, Img_pdt, Preço, dscr, tags, espec, catg FROM cadastros WHERE id = ?";
-    $stmt = $conn->prepare($sql);
-
-    
-    if ($stmt) {
-        $stmt->bind_param("i", $produto_id);
-        $stmt->execute();
-        $stmt->bind_result($nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
-
-        if ($stmt->fetch()) {
-            
+  $servername = "localhost";
+  $username = "root";
+  $password = "-951753/8520+654";
+  $dbname = "cadastros";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  
+  $produto_id = $_GET['produto_id'];
+  
+  $sql = "SELECT Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Preço, dscr, tags, espec, catg FROM cadastros WHERE id = ?";
+  $stmt = $conn->prepare($sql);
+  
+  if ($stmt) {
+      $stmt->bind_param("i", $produto_id);
+      $stmt->execute();
+      
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+  
+      if ($row) {
+          $nomeProduto = $row['Nome'];
+          $imagemProduto = $row['Img_pdt'];
+          $imagemProduto2 = $row['Img_pdt2'];
+          $imagemProduto3 = $row['Img_pdt3'];
+          $imagemProduto4 = $row['Img_pdt4'];
+          $imagemProduto5 = $row['Img_pdt5'];
+          $precoProduto = $row['Preço'];
+          $descricaoProduto = $row['dscr'];
+          $tagsProduto = $row['tags'];
+          $especsProduto = $row['espec'];
+          $categoriasProduto = $row['catg'];
+  
+          // Restante do seu código para exibir os resultados
+      } else {
+          echo "Nenhum resultado encontrado para o ID do produto: " . $produto_id;
+      }
+  
 
 ?>
 
@@ -74,10 +91,11 @@
             </div>
 
             <div class="additional-images">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem2.jpg">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem3.jpg">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem4.jpg">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/imagem5.jpg">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto2; ?>">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto3; ?>">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto4; ?>">
+                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto5; ?>">
             </div>
         </div>
 
@@ -111,7 +129,6 @@
 
             <?php
         }
-    }
     $conn->close();
 ?>
 

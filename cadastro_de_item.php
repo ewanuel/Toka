@@ -62,7 +62,7 @@ if (isset($_FILES["Img_pdt2"]) && $_FILES["Img_pdt2"]["error"] === UPLOAD_ERR_OK
 
 
     if (move_uploaded_file($_FILES["Img_pdt2"]["tmp_name"], $targetFile)) {
-        $imagemProduto = $_FILES["Img_pdt2"]["name"];
+        $imagemProduto2 = $_FILES["Img_pdt2"]["name"];
         // Restante do código de upload
     } else {
         // Tratar o caso em que o arquivo não foi movido corretamente
@@ -72,6 +72,8 @@ if (isset($_FILES["Img_pdt2"]) && $_FILES["Img_pdt2"]["error"] === UPLOAD_ERR_OK
     // Tratar o caso em que o arquivo não foi enviado corretamente
     echo "Erro ao enviar a imagem.";
 }
+
+$imagemProduto3 = $imagemProduto4 = $imagemProduto5 = null;
 
 //imagem pdt3
 
@@ -88,7 +90,7 @@ if (isset($_FILES["Img_pdt3"]) && $_FILES["Img_pdt3"]["error"] === UPLOAD_ERR_OK
 
 
     if (move_uploaded_file($_FILES["Img_pdt3"]["tmp_name"], $targetFile)) {
-        $imagemProduto = $_FILES["Img_pdt3"]["name"];
+        $imagemProduto3 = $_FILES["Img_pdt3"]["name"];
         // Restante do código de upload
     } else {
         // Tratar o caso em que o arquivo não foi movido corretamente
@@ -114,7 +116,7 @@ if (isset($_FILES["Img_pdt4"]) && $_FILES["Img_pdt4"]["error"] === UPLOAD_ERR_OK
 
 
     if (move_uploaded_file($_FILES["Img_pdt4"]["tmp_name"], $targetFile)) {
-        $imagemProduto = $_FILES["Img_pdt4"]["name"];
+        $imagemProduto4 = $_FILES["Img_pdt4"]["name"];
         // Restante do código de upload
     } else {
         // Tratar o caso em que o arquivo não foi movido corretamente
@@ -140,7 +142,7 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
 
 
     if (move_uploaded_file($_FILES["Img_pdt5"]["tmp_name"], $targetFile)) {
-        $imagemProduto = $_FILES["Img_pdt5"]["name"];
+        $imagemProduto5 = $_FILES["Img_pdt5"]["name"];
         // Restante do código de upload
     } else {
         // Tratar o caso em que o arquivo não foi movido corretamente
@@ -156,16 +158,16 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
     // Etapa 4: Fazer o upload da imagem (se necessário)
     $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
 
-    var_dump($nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+    var_dump($nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
 
-    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     
     $categoriasSelecionadas = $_POST['catg'] ?? array(); // Certifique-se de definir um valor padrão se nenhuma categoria for selecionada
     $categoriasProduto = implode(', ', $categoriasSelecionadas);
 
     if ($stmt) {
-        $stmt->bind_param("ssdssss", $nomeProduto, $imagemProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+        $stmt->bind_param("ssssssdssss", $nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
     
         if ($stmt->execute()) {
             // Redirecionar após o sucesso da inserção
