@@ -91,6 +91,16 @@ body {
     object-fit: cover;
 }
 
+.additional-images {
+  margin-top: 7%;
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  overflow: hidden;
+  margin-right: auto;
+  border-radius: 10%;
+}
+
 .product_n {
   position: absolute;
   margin-left: 70%;
@@ -170,6 +180,12 @@ margin-top: -250px;
   
   .esc{
     font-size: 70%;
+  }
+
+  .esc_u{
+    display: flex;
+    width: 80px;
+    height: 70px;
   }
   
   .linha{

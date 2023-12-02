@@ -273,7 +273,7 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
 
             <div class="dscr">
                 <p>Descrição do produto</p>
-                <input type="text" name="dscr">
+                <textarea name="dscr" rows="4" placeholder="Digite a descrição do produto"></textarea>
             </div>
 
             <div class="tags">
@@ -284,8 +284,7 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
             <p class="es">ficha técnica</p>
 
             <div class="espec">
-            <input type="text" name="espec">
-                <button class="out_espec" onclick="addespec()">adicionar outra espec</button>
+            <textarea name="espec" rows="2" placeholder="Digite as especificações"></textarea>
             </div>
 
             <div class="catg">

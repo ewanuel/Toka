@@ -90,12 +90,26 @@
                 <img src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
             </div>
 
-            <div class="additional-images">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto2; ?>">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto3; ?>">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto4; ?>">
-                <img class="additional-image" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto5; ?>">
+            <div class="additional-images" style="margin-top: 3%">
+                <?php if (!empty($imagemProduto)): ?>
+                    <img class="additional-image" style="border-radius: 10%; width: 75px; height: 75px;" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
+                <?php endif; ?>
+
+                <?php if (!empty($imagemProduto2)): ?>
+                    <img class="additional-image" style="border-radius: 10%; width: 75px; height: 75px;" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto2; ?>">
+                <?php endif; ?>
+
+                <?php if (!empty($imagemProduto3)): ?>
+                    <img class="additional-image" style="border-radius: 10%; width: 75px; height: 75px;" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto3; ?>">
+                <?php endif; ?>
+
+                <?php if (!empty($imagemProduto4)): ?>
+                    <img class="additional-image" style="border-radius: 10%; width: 75px; height: 75px;" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto4; ?>">
+                <?php endif; ?>
+
+                <?php if (!empty($imagemProduto5)): ?>
+                    <img class="additional-image" style="border-radius: 10%; width: 75px; height: 75px;" src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto5; ?>">
+                <?php endif; ?>
             </div>
         </div>
 
@@ -109,8 +123,6 @@
                 <!-- Adicione aqui o código para exibir o desconto, se aplicável -->
                 </div>
 
-
-
                 <div class="btn_comp">
                     <button><p>Adicionar ao carrinho</p></button>
                 </div>
@@ -120,7 +132,14 @@
                 <div class="acd_c">
                     <button>Comprar</button>
                 </div>
+                
+                <div class="dscr">
+                    <?php echo $descricaoProduto?>
+                </div>
 
+                <div class="espec">
+                    <?php echo $especsProduto?>
+                </div>
 
             <hr class="linha">
             <div class="coment">
@@ -131,14 +150,15 @@
         }
     $conn->close();
 ?>
-
+        
             <div class="coment">
                 <div class="coment_txt">
                     <p>Comentários</p>
                 </div>
                 <div class="esc">
-                    <p>escreve seu comentário</p>
-                    <input type="text"><button>enviar</button>
+                    <p>escreva seu comentário</p>
+                    <textarea class="esc_u" rows="4" placeholder="Digite seu comentário"></textarea>
+                    <button>Enviar</button>
                 </div>
             </div>
         </h1>
