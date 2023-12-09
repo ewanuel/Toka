@@ -20,7 +20,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $descricaoProduto = $_POST["dscr"];
     $tagsProduto = $_POST["tags"];
     $especsProduto = $_POST["espec"];
-
+    $estoqueDoProduto = $_POST["estq"];
+    $vidProduto = $_POST["Video_pdt"];
 //imagem pdt1
 
 if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) {
@@ -153,21 +154,43 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
     echo "Erro ao enviar a imagem.";
 }
 
+    //envio de vídeos
+
+if (isset($_FILES["Video_pdt"]) && $_FILES["Video_pdt"]["error"] === UPLOAD_ERR_OK) {
+    $targetDirectory = "caminho/para/o/diretorio/de/imagens/";
+    $targetFile = $targetDirectory . basename($_FILES["Video_pdt"]["name"]);
+
+    if (!is_dir($targetDirectory)) {
+        mkdir($targetDirectory, 0777, true);
+    }
+
+    $targetFile = $targetDirectory . basename($_FILES["Video_pdt"]["name"]);
+
+    if (move_uploaded_file($_FILES["Video_pdt"]["tmp_name"], $targetFile)) {
+        $vidProduto = $_FILES["Video_pdt"]["name"];
+
+    } else {
+        print "Erro ao enviar o vídeo";
+    }
+
+}
+
     // Etapa 3: Processar os dados (validações, etc.)
 
     // Etapa 4: Fazer o upload da imagem (se necessário)
     $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
 
-    var_dump($nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
 
-    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Preço, dscr, tags, espec, catg) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    var_dump($nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $vidProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+
+    $sql = "INSERT INTO cadastros (Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Video_pdt, Preço, dscr, tags, espec, catg, estq) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     
     $categoriasSelecionadas = $_POST['catg'] ?? array(); // Certifique-se de definir um valor padrão se nenhuma categoria for selecionada
     $categoriasProduto = implode(', ', $categoriasSelecionadas);
 
     if ($stmt) {
-        $stmt->bind_param("ssssssdssss", $nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+        $stmt->bind_param("sssssssdsssss", $nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $vidProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto, $estoqueDoProduto);
     
         if ($stmt->execute()) {
             // Redirecionar após o sucesso da inserção
@@ -265,6 +288,13 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
                 </div>
             </div>
 
+            <div class="Video_pdt">
+                <p>Vídeo do produto</p>
+                <input type="file" id="videoProduto1" accept="video/*" name="Video_pdt">
+                <div id="videoPreview1">
+        
+                </div>
+            </div>
 
             <div class="Preço">
                 <p>Preço do Produto</p>
@@ -303,6 +333,10 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
                 <label for="Cat_pelucias">Pelucias</label>
             </div>
 
+            <div class="estq">
+                <p>Quantidade no Estoque</p>
+                <input type="text" name="estq">
+            </div>
 
             <div class="preview">
                 <button class="cadast" type="button" onclick="previewItem()">pré visualizar</button>
