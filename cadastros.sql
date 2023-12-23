@@ -22,11 +22,3 @@ CREATE TABLE cadastros (
     catg VARCHAR(255) NOT NULL,
     estq DECIMAL NOT NULL
 );
-
-CREATE TABLE comentarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    produto_id INT,
-    usuario VARCHAR(50),
-    comentario TEXT,
-    data_postagem TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);

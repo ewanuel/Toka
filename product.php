@@ -7,7 +7,7 @@
 
     <title>Toka dos Brinquedos e Colecionaveis</title>
 
-    <link rel="stylesheet" href="produto.css">
+    <link rel="stylesheet" href="product.css">
 
 </head>
 <body>
@@ -20,8 +20,8 @@
             <button class="Cat"><img src="img/icone/menu_burger.png"></button>
 
             <div class="lg">
-                <button onclick="window.location.href='index.html'">
-                <img src="img/icone/logo/Toka Logo-01.png">
+                <button onclick="window.location.href='main.html#h1'">
+                    <img src="img/icone/logo/Toka Logo-01.png">
                 </button>
             </div>
                 
@@ -42,95 +42,52 @@
         </div>
     </header>
 
-    <?php
 
-$servername = "localhost";
-$username = "root";
-$password = "-951753/8520+654";
-$dbname = "cadastros";
+    
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+    <?php 
+  $servername = "localhost";
+  $username = "root";
+  $password = "-951753/8520+654";
+  $dbname = "cadastros";
+  
+  $conn = new mysqli($servername, $username, $password, $dbname);
+  
+  $produto_id = $_GET['produto_id'];
+  
+  $sql = "SELECT Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Video_pdt, Preço, dscr, tags, espec, catg FROM cadastros WHERE id = ?";
+  $stmt = $conn->prepare($sql);
+  
+  if ($stmt) {
+      $stmt->bind_param("i", $produto_id);
+      $stmt->execute();
+      
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+  
+      if ($row) {
+          $nomeProduto = $row['Nome'];
+          $imagemProduto = $row['Img_pdt'];
+          $imagemProduto2 = $row['Img_pdt2'];
+          $imagemProduto3 = $row['Img_pdt3'];
+          $imagemProduto4 = $row['Img_pdt4'];
+          $imagemProduto5 = $row['Img_pdt5'];
+          $vidProduto = $row["Video_pdt"];
+          $precoProduto = $row['Preço'];
+          $descricaoProduto = $row['dscr'];
+          $tagsProduto = $row['tags'];
+          $especsProduto = $row['espec'];
+          $categoriasProduto = $row['catg'];
+  
+          // Restante do seu código para exibir os resultados
+      } else {
+          echo "Nenhum resultado encontrado para o ID do produto: " . $produto_id;
+      }
+  
 
-$produto_id = $_GET['Nome'];
+?>
 
-$sql = "SELECT Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Video_pdt, Preço, dscr, tags, espec, catg FROM cadastros WHERE id = ?";
-$stmt = $conn->prepare($sql);
-
-if ($stmt) {
-    $stmt->bind_param("i", $produto_id);
-    $stmt->execute();
-
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-
-    if ($row) {
-        $nomeProduto = $row['Nome'];
-        $imagemProduto = $row['Img_pdt'];
-        $imagemProduto2 = $row['Img_pdt2'];
-        $imagemProduto3 = $row['Img_pdt3'];
-        $imagemProduto4 = $row['Img_pdt4'];
-        $imagemProduto5 = $row['Img_pdt5'];
-        $vidProduto = $row["Video_pdt"];
-        $precoProduto = $row['Preço'];
-        $descricaoProduto = $row['dscr'];
-        $tagsProduto = $row['tags'];
-        $especsProduto = $row['espec'];
-        $categoriasProduto = $row['catg'];
-
-        // Restante do seu código para exibir os resultados
-    } else {
-        echo "Nenhum resultado encontrado para o ID do produto: " . $produto_id;
-    }
-
-    //postar comentários
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $produto_id = $_POST['Nome'];
-        $usuario = "Nome do Usuário";
-        $comentario = $_POST['comentario'];
-
-        // Reabra a conexão antes de preparar o statement
-        $stmt = $conn->prepare("INSERT INTO cadastros (Nome, usuario, comentario) VALUES (?, ?, ?)");
-        $stmt->bind_param("iss", $produto_id, $usuario, $comentario);
-
-        if ($stmt->execute()) {
-            echo "Comentário postado com sucesso!";
-        } else {
-            echo "Erro ao postar o comentário: " . $stmt->error;
-        }
-
-        $stmt->close();
-    }
-
-    //Exibir os comentários
-    $sql_comentarios = "SELECT usuario, comentario FROM comentarios WHERE Nome = ?";
-    $stmt_comentarios = $conn->prepare($sql_comentarios);
-
-    if ($stmt_comentarios) {
-        $stmt_comentarios->bind_param("i", $produto_id);
-        $stmt_comentarios->execute();
-        $result_comentarios = $stmt_comentarios->get_result();
-
-        if ($result_comentarios->num_rows > 0) {
-            echo '<div class="comentarios">';
-            while ($row_comentario = $result_comentarios->fetch_assoc()) {
-                echo '<div class="comentario">';
-                echo '<p><strong>' . $row_comentario['usuario'] . '</strong>' . $row_comentario['comentario'] . '</p>';
-                echo '</div>';
-            }
-            echo '</div>';
-        } else {
-            echo '<p>Esta página não possui comentários ainda. Caso tenha algo a dizer sobre o produto, seja o primeiro ;)</p>';
-        }
-
-        $stmt_comentarios->close();
-    } else {
-        echo "Erro na consulta de comentários: " . $stmt_comentarios->error;
-    }
-
-    $conn->close();
-}
-?>  
-        <div class="product-image">
+<div class="product-image">
                 <img src="caminho/para/o/diretorio/de/imagens/<?php echo $imagemProduto; ?>">
                 <video src="caminho/para/o/diretorio/de/imagens/<?php echo $vidProduto; ?>">
             </div>
@@ -198,17 +155,19 @@ if ($stmt) {
                 <!-- Adicione aqui o código para exibir os comentários, se necessário -->
             </div>
 
+            <?php
+        }
+    $conn->close();
+?>
+        
             <div class="coment">
                 <div class="coment_txt">
                     <p>Comentários</p>
                 </div>
                 <div class="esc">
-                <form id="commentForm" action="product.php" method="post">
-                        <p>escreva seu comentário</p>
-                        <textarea name="comentario" class="esc_u" rows="4" placeholder="Digite seu comentário"></textarea>
-                        <input type="hidden" name="Nome" value="<?php echo $produto_id; ?>">
-                        <button type="submit">Enviar</button>
-                    </form>
+                    <p>escreva seu comentário</p>
+                    <textarea class="esc_u" rows="4" placeholder="Digite seu comentário"></textarea>
+                    <button>Enviar</button>
                 </div>
             </div>
         </h1>

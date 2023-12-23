@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $especsProduto = $_POST["espec"];
     $estoqueDoProduto = $_POST["estq"];
     $vidProduto = $_POST["Video_pdt"];
+
 //imagem pdt1
 
 if (isset($_FILES["Img_pdt"]) && $_FILES["Img_pdt"]["error"] === UPLOAD_ERR_OK) {
@@ -154,9 +155,9 @@ if (isset($_FILES["Img_pdt5"]) && $_FILES["Img_pdt5"]["error"] === UPLOAD_ERR_OK
     echo "Erro ao enviar a imagem.";
 }
 
-    //envio de vídeos
+  //envio de vídeos
 
-if (isset($_FILES["Video_pdt"]) && $_FILES["Video_pdt"]["error"] === UPLOAD_ERR_OK) {
+  if (isset($_FILES["Video_pdt"]) && $_FILES["Video_pdt"]["error"] === UPLOAD_ERR_OK) {
     $targetDirectory = "caminho/para/o/diretorio/de/imagens/";
     $targetFile = $targetDirectory . basename($_FILES["Video_pdt"]["name"]);
 
@@ -180,8 +181,7 @@ if (isset($_FILES["Video_pdt"]) && $_FILES["Video_pdt"]["error"] === UPLOAD_ERR_
     // Etapa 4: Fazer o upload da imagem (se necessário)
     $targetDirectory = "caminho/para/o/diretorio/de/imagens/"; // Substitua pelo caminho correto
 
-
-    var_dump($nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $vidProduto, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
+    var_dump($nomeProduto, $imagemProduto, $imagemProduto2, $imagemProduto3, $imagemProduto4, $imagemProduto5, $precoProduto, $descricaoProduto, $tagsProduto, $especsProduto, $categoriasProduto);
 
     $sql = "INSERT INTO cadastros (Nome, Img_pdt, Img_pdt2, Img_pdt3, Img_pdt4, Img_pdt5, Video_pdt, Preço, dscr, tags, espec, catg, estq) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
@@ -292,7 +292,6 @@ if (isset($_FILES["Video_pdt"]) && $_FILES["Video_pdt"]["error"] === UPLOAD_ERR_
                 <p>Vídeo do produto</p>
                 <input type="file" id="videoProduto1" accept="video/*" name="Video_pdt">
                 <div id="videoPreview1">
-        
                 </div>
             </div>
 
