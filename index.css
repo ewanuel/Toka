@@ -1,0 +1,371 @@
+@charset "utf-8";
+
+/*cabeçalho*/
+
+.b_sup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    background-color: black;
+    z-index: 9999;
+}
+
+.Cat {
+    position: fixed;
+    top: -230px;
+    left: -230px;
+    transform: scale(0.05);
+    background-color: transparent;
+    border: none;
+}
+
+.lg  button{
+    position: fixed;
+    top: -1022px;
+    left: -955px;
+    transform: scale(0.05);
+    background-color: transparent;
+    border:transparent;
+}
+
+.b_psq {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: scale(1);
+}
+
+.b_psq button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    transform: scale(0.8);
+  }
+
+.b_sup_btns{
+    position: fixed;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+    top: 15px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: translateX(0%);
+    }
+    
+.b_sup_btns button{
+    margin: 2px;
+}
+
+.Cr_s_c,
+.Ent{
+    background-color: wheat;
+}
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .b_sup {
+      height: 40px; 
+  }
+
+  .Cat {
+      position: relative;
+      transform: scale(0.); 
+  }
+
+  .b_sup_btns {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      height: 100%;
+  }
+
+  .lg button {
+      position: relative;
+      transform: scale(0.03);
+      margin-top: -505px; 
+  }
+
+  .b_psq {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.7);
+
+ 
+  .Cr_s_c,
+  .Ent {
+      background-color: wheat;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin: 2px;
+      transform: scale(0.7);
+  }
+
+  
+  .b_psq input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+  }
+}
+}
+
+.swiper-slide {
+        width: 100%;
+        height: 300px; 
+        top: 45px;
+}
+      
+.swiper-slide img {
+        width: 100%;
+        height: 150%;
+        object-fit: cover; 
+        border-radius: 40px;
+}
+    
+.swiper-pagination {
+    position: relative;
+    margin-top: 110px; 
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(233, 233, 233, 1); 
+    border-radius: 50%;
+    margin: 0 5px; 
+}
+
+.swiper-pagination-bullet-active {
+    background-color: rgb(255, 255, 255); 
+}
+
+.cat {
+    text-align: center;
+    margin-top: 35px;
+  }
+
+.cat button.cat {
+    display: inline-block;
+    margin-right: 8px;
+ 
+    background-color: transparent;
+    border: none;
+  }
+
+.cat button.cat img {
+    width: 150px; 
+    height: auto;
+  }
+  
+.cat {
+    text-align: center;
+  }
+
+.cat button.cat {
+    display: inline-block;
+    margin-right: 8px;
+    margin-top: 85px; 
+    background-color: transparent;
+    border: none;
+  }
+
+.cat button.cat img {
+    width: 150px; 
+    height: auto;
+  }
+
+.destaques_text {
+    font-size: 125%;
+    font-family:Arial, Helvetica, sans-serif;
+    
+    margin-top: 45PX;
+    margin-left: 15px;
+  }
+  .destaques {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap:25px;
+  }
+  
+/*.skp_b{
+    display: inline-block;
+    justify-content: cen;
+    width: px;
+    size: 99%;
+  }*/
+
+  .pro1,
+  .pro2,
+  .pro3,
+  .pro4,
+  .pro5 {
+    text-align: center;
+    margin: 3%; 
+  }
+  
+  .pro1 button,
+  .pro2 button,
+  .pro3 button,
+  .pro4 button,
+  .pro5 button {
+    background-color: transparent;
+    border: none;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .pro1 p a,
+  .pro2 p a,
+  .pro3 p a,
+  .pro4 p a,
+  .pro5 p a {
+    color: black;
+    font-size: 120%;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -px;
+    text-decoration: none 
+  }
+  
+  .pro1 img,
+  .pro2 img,
+  .pro3 img,
+  .pro4 img,
+  .pro5 img {
+    display: block;
+    border-radius: 100px;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .loja {
+    max-width: 100%; 
+    position: relative;
+    text-align: right; 
+  }
+  
+  .loja_png {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    position: relative;
+    margin-right: 10px;
+    right: 0; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), transparent), url("troca/loja.png");
+    border-radius: 10px; 
+  }
+  
+  .loja_txt {
+    font-size: 50%;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    text-align: left;
+    margin-top: -190px;
+    margin-right: 10px;
+  }
+
+  .loja_txt2 {
+    font-size: 20px;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    text-align: left;
+    margin-top: -19px;
+    margin-right: 10px;
+  }
+
+
+.loja_android_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .loja_png {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .loja_txt {
+    display: none; /* Esconde o elemento .loja_txt em dispositivos Android */
+  }
+}
+
+  .people {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  }
+
+  .people img {
+    max-width: 70px;
+    height: 70px;
+    display: block;
+    margin: 20px;
+    border-radius: 40px;
+  }
+  
+  
+  .rdp {
+    display: flex; /* Utiliza flexbox para alinhar os elementos em uma linha */
+    align-items: center; /* Centraliza verticalmente os elementos */
+    margin-top: 100px;
+    width: 100%;
+    height: 45px;
+    background-color: black;
+    z-index: 9999;
+  }
+  
+  .rdp img {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px; /* Espaçamento horizontal entre o ícone e o texto */
+  }
+  
+  button {
+    margin-right: 20px; /* Espaçamento horizontal entre os botões */
+    border: none; /* Remove a borda do botão */
+    background-color: transparent; /* Torna o botão transparente */
+    cursor: pointer; /* Mostra o cursor de ponteiro ao passar sobre o botão */
+  }
+  
+  .zaptxt{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: white;
+    margin: 5px; /* Espaçamento vertical e horizontal entre os ícones e os textos */
+  }
+  .email {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: white;
+    margin: 10px 50px; /* Espaçamento vertical e horizontal entre os ícones e os textos */
+  }
+
+  .inst{
+    border-radius: 40px;
+  }
+
+  

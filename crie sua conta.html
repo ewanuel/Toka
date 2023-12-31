@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Toka dos Brinquedos e Colecionaveis</title>
+    <link rel="stylesheet" href="crie_sua_conta.css">
+</head>
+<body>
+    <header id="cab">
+    <div class="b_sup">
+
+    <button class="Cat"><img src="img/icone/menu_burger.png"></button>
+
+    <div class="lg">
+        <button onclick="window.location.href='index.html'">
+        <img src="img/icone/logo/Toka Logo-01.png">
+        </button>
+    </div>
+    
+    <div class="b_psq">
+        <input type="text">
+        <button class="psq_icon"><img src="img/icone/search-alt-2-regular-24.png"></button>
+    </div>
+
+<div class="b_sup_btns">
+        <a href="entrar.html">
+            <button class="Ent">Entrar</button>
+        </a>
+        <a href="crie sua conta.html">
+            <button class="Cr_s_c">Crie sua Conta</button>
+        </a>
+    </div>
+
+    </div>
+    </header>
+    <h1>
+        <form action="crie_sua_conta.php" method="post">
+            <div class="nome">
+                <p>Nome</p>
+                <input type="text" name="nome">
+            </div>
+
+            <div class="sobrenome">
+                <p>Sobrenome</p>
+                <input type="text" name="sobrenome">
+            </div>
+
+            <div class="cpf">
+                <p>CPF</p>
+                <input type="text" name="cpf" id="cpf">
+            </div>
+
+            <div class="cep">
+                <p>CEP</p>
+                <input type="text" name="cep" id="cep">
+            </div>
+
+            <div class="email">
+                <p>Email</p>
+                <input type="text" name="email">
+            </div>
+
+            <div class="senha">
+                <p>Senha</p>
+                <input type="password" name="senha">
+            </div>
+
+            <button class="Ent" type="submit">Cadastrar</button>
+
+            <div id="mensagem"></div>
+
+        </form>
+    </h1>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Função para formatar o CPF com pontos
+            $('#cpf').on('input', function () {
+                let cpf = $(this).val().replace(/\D/g, '');
+                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+                $(this).val(cpf);
+            });
+
+            // Função para formatar o CEP com traços
+            $('#cep').on('input', function () {
+                let cep = $(this).val().replace(/\D/g, '');
+                cep = cep.replace(/(\d{5})(\d{3})/, '$1-$2');
+                $(this).val(cep);
+            });
+        });
+    </script>
+
+</body>
+</html>

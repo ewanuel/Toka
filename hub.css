@@ -1,0 +1,153 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+h1 {
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    overflow: hidden;
+    background-color: black;
+}
+
+.logo {
+    max-width: 60%;
+    margin-left: 15%;
+}
+.logotxt {
+  color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 45%;
+    top: -40px;
+    position: relative;
+    left: 8%;
+    white-space: nowrap;
+}
+
+.inst,
+.fac img, 
+.zap{
+    position: relative;
+    margin: 10px;
+    max-width: 7%; 
+    border-radius: 4000px;
+}
+
+.zaptxt {
+    color: white;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 15px;
+    margin-top: 0px;
+    position: relative;
+    left: 12%;
+    white-space: nowrap;
+}
+
+.loja_png {
+    max-width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto; 
+    position: relative;
+    margin-right: 10px;
+    right: 0; 
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), transparent), url("troca/loja.png");
+    border-radius: 10px; 
+  }
+  
+  .loja_txt {
+    color:white; 
+    font-size: 50%;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;  
+    text-align: left;
+    margin-top: -190px;
+    margin-right: 10px;
+  }
+
+  .loja_txt2 {
+    color:white;
+    font-size: 20px;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    text-align: left;
+    margin-top: -19px;
+    margin-right: 10px;
+  }
+
+
+.loja_android_wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adaptação para dispositivos Moveis */
+@media only screen and (max-width: 600px) {
+  .loja_png {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .loja_txt {
+    display: none; /* Esconde o elemento .loja_txt em dispositivos Android */
+  }
+}
+
+  .people {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 100%;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    font-size: 60%;
+    margin: 20px;
+  }
+
+  .people img {
+    max-width: 70px;
+    height: 70px;
+    display: block;
+
+    border-radius: 40px;
+  }
+  
+  .ptxt1,
+  .ptxt2,
+  .ptxt3 {
+    color: white;
+  }
+
+  .destaques {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os elementos quebrem para a próxima linha em telas menores */
+    justify-content: center; /* Centralize horizontalmente os elementos filhos */
+    align-items: center; /* Centralize verticalmente os elementos filhos */
+    margin-top: 30%/* Adicione margem superior para espaçamento */
+  }
+  
+  /* Defina uma largura máxima para os elementos da classe "destaques" */
+    
+  .pro1, .pro2, .pro3 {
+    text-align: center;
+    margin: 10px; /* Adicione margem para espaçamento entre os elementos */
+    max-width: 200px; /* Ajuste a largura máxima conforme necessário */
+    color: white !important; /* Defina a cor do texto como branco com !important */
+  }
+  
+  /* Estilize as imagens dentro dos elementos "pro" conforme necessário */
+  .pro1 img, .pro2 img, .pro3 img {
+    max-width: 100%; /* Garanta que as imagens se redimensionem automaticamente */
+    height: auto;
+    border-radius: 100px;
+
+  }
+

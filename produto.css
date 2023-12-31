@@ -1,0 +1,248 @@
+.b_sup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7%;
+  background-color: black;
+  z-index: 9999;
+}
+
+.Cat {
+  position: fixed;
+  top: -230%;
+  left: -230%;
+  transform: scale(0.05);
+  background-color: transparent;
+  border: none;
+}
+
+.lg  button{
+  position: fixed;
+  top: -1022%;
+  left: -955%;
+  transform: scale(0.05);
+  background-color: transparent;
+  border:transparent;
+}
+
+.b_psq {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: scale(1);
+}
+
+.b_psq button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  transform: scale(0.8);
+}
+
+.b_sup_btns{
+  position: fixed;
+  display: flex;
+  justify-content: right;
+  align-items: right;
+  top: 15px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: translateX(0%);
+  }
+  
+.b_sup_btns button{
+  margin: 2px;
+}
+
+.Cr_s_c,
+.Ent{
+  background-color: wheat;
+}
+
+
+body {
+  background-color: rgb(243, 250, 253);
+  flex-direction: column;
+  align-items: center;
+  }
+ 
+
+  .product-image {
+    margin-top: 7%;
+    width: 100%;
+    max-width: 400px; /* ou ajuste conforme necessário */
+    height: 400px; /* ajuste conforme necessário */
+    overflow: hidden;
+    margin-right: auto; /* alinha à esquerda */
+    border-radius: 10%;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.additional-images {
+  margin-top: 7%;
+  width: 100%;
+  max-width: 400px;
+  height: 400px;
+  overflow: hidden;
+  margin-right: auto;
+  border-radius: 10%;
+}
+
+.product-video {
+  width: 100%;
+  height: auto;
+}
+
+.product_n {
+  position: absolute;
+  margin-left: 75%;
+ margin-top: -870px;
+}
+
+.product_n p {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.preco p {
+  position: relative;
+    font-size: 45px;
+    left: 75%;
+    top: -800px;
+}
+
+.btn_comp {
+  position: relative;
+margin-left: 80%;
+margin-top: -750px;
+}
+.acd_c {
+    position: relative;
+  margin-left: 85%;
+}
+
+.btn_comp button,
+.acd_c button {
+    background-color: #ffc400;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1% 1%;
+    border: none;
+    border-radius: 25%;
+    margin-right: 10%;
+    cursor: pointer;
+}
+.dscr {
+margin-top: 250px;
+text-align: justify;
+}
+
+.linha {
+    margin-top: 20px;
+}
+  
+  .zaptxt{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: white;
+    margin: 5px;
+  }
+  .email {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: white;
+    margin: 10px 50px; 
+  }
+  
+  .inst{
+    border-radius: 40px;
+  }
+  
+  .seção{
+    background-color: white;
+    padding: 200px;
+    margin: 15px;
+    border: 1px solid #ccc;
+    height: 600px;
+    overflow-y: auto;
+  }
+  
+  .coment{
+    position: absolute;
+    font-family: "Segoe UI Light", "Segoe UI", sans-serif;
+    top: 875px;
+    right: 50%;
+    left: 50%;
+  }
+  
+  .esc{
+    font-size: 70%;
+  }
+
+  .esc_u{
+    display: flex;
+    width: 80px;
+    height: 70px;
+  }
+  
+  .linha{
+    position: relative;
+    margin-top: 150px;
+    width: 300px; 
+  }
+  
+  .rdp {
+    display: flex; 
+    align-items: center; 
+    margin-top: 650px;
+    width: 100%;
+    height: 45px;
+    background-color: black;
+    z-index: 9999;
+  }
+  
+  .rdp img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px; 
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .b_sup_btns {
+      display: block; /* Altera para empilhar verticalmente */
+      text-align: right; /* Alinha ao centro para dispositivos menores */
+    }
+  
+    .product_n {
+      position: relative;
+      margin-left: 0;
+      margin-top: 10px; /* Ajuste conforme necessário */
+      text-align: center; /* Alinha ao centro para dispositivos menores */
+    }
+  
+    .preco p {
+      position: relative;
+      left: 0;
+      top: 0;
+    }
+  
+    .btn_comp, .acd_c {
+      position: relative;
+      margin-left: 0;
+      margin-top: 10px; /* Ajuste conforme necessário */
+      text-align: center; /* Alinha ao centro para dispositivos menores */
+    }
+  }
+  
